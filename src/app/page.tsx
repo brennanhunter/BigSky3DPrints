@@ -3,6 +3,7 @@ import Logo from './images/logo.png';
 import Header from './components/header';
 import RainCanvas from './components/RainCanvas';
 import Hero3D from './components/Hero3D';
+import WhatYouCanGet from './components/WhatYouCanGet';
 
 export default function HomePage() {
   return (
@@ -12,7 +13,8 @@ export default function HomePage() {
 
       {/* Hero Section */}
      <Hero3D />
-
+      {/* What You Can Get Section */}
+      <WhatYouCanGet />
       {/* Contact Section */}
       <section id="contact" className="py-20 bg-linen">
         <div className="max-w-xl mx-auto text-center px-4">

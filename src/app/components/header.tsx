@@ -24,11 +24,13 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const maxScroll = 300;
-  const scrollProgress = Math.min(scrollY / maxScroll, 1);
+  const maxScroll = 1000; // slow cloud reaction range
+const scrollProgress = Math.min(scrollY / maxScroll, 1);
+const easedProgress = Math.pow(scrollProgress, 2.2); // more easing = slower ramp-up
 
-  const cloudLift = scrollProgress * 150; // Up to 25px rise
-  const cloudDarkness = 1 - scrollProgress * 0.3; // Brightness drops to ~70%
+const cloudLift = easedProgress * 60; // gentle rise
+const cloudDarkness = 1 - easedProgress * 0.25; // darkens less aggressively
+
 
   return (
     <header className="fixed top-0 z-50 w-full h-[220px] overflow-visible bg-transparent">

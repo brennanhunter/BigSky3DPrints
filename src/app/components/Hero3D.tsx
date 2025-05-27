@@ -5,7 +5,8 @@ const logoPath = '/images/logo.png';
 
 export default function Hero3D() {
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-screen px-4 text-center text-ink bg-gradient-to-b from-skylight to-white overflow-hidden">
+    <section className="relative flex flex-col items-center justify-center min-h-screen px-4 text-center text-ink bg-gradient-to-b from-skylight via-white to-mist
+ overflow-hidden">
       {/* Logo + Brand */}
       <motion.div
         initial={{ opacity: 0, y: -40 }}
@@ -29,8 +30,8 @@ export default function Hero3D() {
         transition={{ duration: 1.2 }}
         className="text-4xl md:text-6xl font-bold mb-4 leading-tight"
       >
-        Precision Prints. Nature-Inspired. <br />
-        <span className="text-clay">Made Just for You.</span>
+        Turn Your Imagination Into Reality <br />
+        <span className="text-clay">One Layer at a Time.</span>
       </motion.h1>
 
       {/* Subheadline */}
@@ -40,7 +41,7 @@ export default function Hero3D() {
         transition={{ delay: 1.5 }}
         className="text-lg md:text-xl max-w-xl mb-8"
       >
-        Discover handcrafted 3D prints blending creativity and craft—built in the Big Sky State.
+        Custom 3D prints designed for home, celebration, and invention.
       </motion.p>
 
       {/* Call to Action */}
@@ -52,6 +53,7 @@ export default function Hero3D() {
       >
         Explore Our Work
       </motion.a>
+      
 
       {/* Decorative 3D Printer Outline or Animation */}
       <motion.div

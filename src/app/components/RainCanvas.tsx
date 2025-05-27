@@ -12,7 +12,7 @@ interface Raindrop {
 export default function RainCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const fullRainPool = useRef<Raindrop[]>([]);
-  const intensityRef = useRef(0); // Controls visible rain % based on scroll
+  const intensityRef = useRef(0);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -24,12 +24,11 @@ export default function RainCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    // Pre-generate all raindrops
     fullRainPool.current = Array.from({ length: 200 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      length: 10 + Math.random() * 20,
-      speed: 2 + Math.random() * 3,
+      length: 8 + Math.random() * 15,
+      speed: 0.5 + Math.random() * 1.5,
       opacity: 0.3 + Math.random() * 0.5,
     }));
 
@@ -41,9 +40,9 @@ export default function RainCanvas() {
       const activeDrops = fullRainPool.current.slice(0, dropCount);
 
       ctx.lineWidth = 1.2;
-      ctx.strokeStyle = 'rgba(100, 100, 255, 0.4)';
 
       for (const drop of activeDrops) {
+        ctx.strokeStyle = `rgba(100, 100, 255, ${drop.opacity * intensityRef.current})`;
         ctx.beginPath();
         ctx.moveTo(drop.x, drop.y);
         ctx.lineTo(drop.x, drop.y + drop.length);
@@ -63,7 +62,7 @@ export default function RainCanvas() {
       const scrollTop = window.scrollY;
       const docHeight = document.body.scrollHeight - window.innerHeight;
       const scrollProgress = Math.min(scrollTop / docHeight, 1);
-      intensityRef.current = scrollProgress;
+      intensityRef.current = Math.max(0, scrollProgress - 0.15);
     };
 
     window.addEventListener('scroll', handleScroll);
