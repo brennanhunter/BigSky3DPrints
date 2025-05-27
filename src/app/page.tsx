@@ -2,6 +2,9 @@ import Header from './components/header';
 import RainCanvas from './components/RainCanvas';
 import Hero3D from './components/Hero3D';
 import WhatYouCanGet from './components/WhatYouCanGet';
+import Footer from './components/Footer';
+import TestimonialCarousel from './components/TestimonialCarousel';
+import PremadeShop from './components/PremadeShop';
 
 export default function HomePage() {
   return (
@@ -13,6 +16,12 @@ export default function HomePage() {
      <Hero3D />
       {/* What You Can Get Section */}
       <WhatYouCanGet />
+      {/* Testimonials Section */}
+      <TestimonialCarousel />
+      {/*Shop Section */}
+      <PremadeShop />
+      
+      {/* About Section */}
       {/* Contact Section */}
       <section id="contact" className="py-20 bg-linen">
         <div className="max-w-xl mx-auto text-center px-4">
@@ -45,9 +54,7 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="text-center py-6 text-sm text-ink">
-        &copy; {new Date().getFullYear()} Big Sky 3D Prints. All rights reserved.
-      </footer>
+      <Footer />
     </main>
   );
 }
