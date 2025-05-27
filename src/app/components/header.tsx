@@ -6,6 +6,7 @@ import Logo from '../images/logo.png';
 
 export default function Header() {
   const [angle, setAngle] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     let animationFrameId: number;
@@ -68,13 +69,44 @@ export default function Header() {
             />
           </Link>
         </div>
+
+        {/* Desktop Menu */}
         <nav className="hidden md:flex space-x-6 text-lg font-medium">
           <Link href="/">Home</Link>
           <Link href="/about">About</Link>
           <Link href="/shop">Shop</Link>
           <Link href="/contact">Contact</Link>
         </nav>
+
+        {/* Hamburger for Mobile */}
+        <div className="md:hidden">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-3xl focus:outline-none"
+            aria-label="Toggle menu"
+          >
+            ☰
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Dropdown */}
+      {isOpen && (
+        <div className="absolute top-[100%] left-0 w-full bg-white shadow-md border-t border-gray-200 flex flex-col items-start px-6 py-4 md:hidden text-ink text-lg font-medium z-40">
+          <Link href="/" className="py-2 w-full" onClick={() => setIsOpen(false)}>
+            Home
+          </Link>
+          <Link href="/about" className="py-2 w-full" onClick={() => setIsOpen(false)}>
+            About
+          </Link>
+          <Link href="/shop" className="py-2 w-full" onClick={() => setIsOpen(false)}>
+            Shop
+          </Link>
+          <Link href="/contact" className="py-2 w-full" onClick={() => setIsOpen(false)}>
+            Contact
+          </Link>
+        </div>
+      )}
     </header>
   );
 }
