@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import Logo from '../Images/logo.png';
+import Logo from '../images/logo.png';
 
 export default function Header() {
   const [angle, setAngle] = useState(0);
