@@ -1,18 +1,30 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
+
+interface Raindrop {
+  x: number;
+  y: number;
+  length: number;
+  speed: number;
+  opacity: number;
+}
 
 export default function RainCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const fullRainPool = useRef<any[]>([]);
-  const intensityRef = useRef(0); // For fast access in animation loop
+  const fullRainPool = useRef<Raindrop[]>([]);
+  const intensityRef = useRef(0); // Controls visible rain % based on scroll
 
   useEffect(() => {
-    const canvas = canvasRef.current!;
-    const ctx = canvas.getContext('2d')!;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    // Generate all raindrops
+    // Pre-generate all raindrops
     fullRainPool.current = Array.from({ length: 200 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
@@ -31,12 +43,13 @@ export default function RainCanvas() {
       ctx.lineWidth = 1.2;
       ctx.strokeStyle = 'rgba(100, 100, 255, 0.4)';
 
-      for (let drop of activeDrops) {
+      for (const drop of activeDrops) {
         ctx.beginPath();
         ctx.moveTo(drop.x, drop.y);
         ctx.lineTo(drop.x, drop.y + drop.length);
         ctx.stroke();
         drop.y += drop.speed;
+
         if (drop.y > canvas.height) {
           drop.y = -drop.length;
           drop.x = Math.random() * canvas.width;
