@@ -1,15 +1,27 @@
 @import "tailwindcss";
 
+@theme {
+--color-skylight: #d8f3ff;
+  --color-honeyrose: #f7d4d4;
+  --color-clay: #e4cfc3;
+  --color-mist: #ddeeea;
+  --color-clay: #cabaa3;
+  --color-ink: #2e2e2e;
+  --color-linen: #f9f8f6;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
+
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,4 +35,47 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes floatClouds {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 1000px 0;
+  }
+}
+
+.bg-clouds {
+  background-image: url('/CloudHeader.svg');
+  background-size: cover;
+  background-repeat: repeat-x;
+  animation: floatClouds 60s linear infinite;
+  opacity: 0.3;
+}
+
+.cloud-mask {
+  background: radial-gradient(circle at 20% 80%, #fff 30%, transparent 70%),
+              radial-gradient(circle at 50% 100%, #fff 30%, transparent 70%),
+              radial-gradient(circle at 80% 80%, #fff 30%, transparent 70%);
+  background-repeat: no-repeat;
+  background-size: 33% 100%;
+  background-position: 0% 0%, 50% 0%, 100% 0%;
+}
+
+@keyframes driftClouds {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: 1000px;
+  }
+}
+
+.bg-clouds {
+  background-image: url('/cloud-3d.png');
+  background-repeat: repeat-x;
+  background-size: 300px auto; /* Adjust width */
+  background-position: top center;
+  animation: driftClouds 60s linear infinite;
 }

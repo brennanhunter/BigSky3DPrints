@@ -1,103 +1,88 @@
-import Image from "next/image";
+import Image from 'next/image'
+import Logo from './images/logo.png'
+import Header from './components/header';
+import RainCanvas from './components/RainCanvas';
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+    <main className="bg-gradient-to-b from-skylight to-white text-ink font-sans">
+      <RainCanvas />
+      {/* Header */}
+      <Header />
+      {/* Hero Section */}
+      <section className="min-h-screen flex flex-col justify-center items-center text-center px-4">
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+          src={Logo}
+          alt="Big Sky 3D Prints Logo"
+          className="w-52 md:w-64 mb-6 rounded-xl shadow-lg border border-white/50"
         />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        <h1 className="text-ink text-4xl md:text-6xl font-bold mb-4">Bring Your Imagination to Life</h1>
+        <p className="text-lg md:text-xl max-w-xl mb-8">
+          Custom 3D prints infused with natural elegance and crafted with precision.
+        </p>
+        <a
+          href="#services"
+          className="px-6 py-3 bg-clay hover:bg-clay/90 text-white rounded-full text-lg transition"
+        >
+          Explore Services
+        </a>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="py-20 bg-linen text-center">
+        <h2 className="text-3xl md:text-4xl font-semibold mb-10 text-ink">Our Services</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
+          <div className="p-6 border border-clay rounded-lg shadow-sm hover:shadow-md transition bg-skylight">
+            <h3 className="text-xl font-bold mb-2 text-ink">Home Decor Prints</h3>
+            <p>Elegant vases, wall art, and intricate nature-inspired designs for your space.</p>
+          </div>
+          <div className="p-6 border border-clay rounded-lg shadow-sm hover:shadow-md transition bg-skylight">
+            <h3 className="text-xl font-bold mb-2 text-ink">Custom Event Pieces</h3>
+            <p>Table numbers, signage, and one-of-a-kind decor for weddings and events.</p>
+          </div>
+          <div className="p-6 border border-clay rounded-lg shadow-sm hover:shadow-md transition bg-skylight">
+            <h3 className="text-xl font-bold mb-2 text-ink">Prototyping Support</h3>
+            <p>Need something technical? We’ll help turn your idea into a tangible prototype.</p>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 bg-linen">
+        <div className="max-w-xl mx-auto text-center px-4">
+          <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-ink">Let’s Print Something Beautiful</h2>
+          <p className="mb-8 text-ink">Send us a message and let us know what you’re dreaming up.</p>
+          <form className="flex flex-col gap-4">
+            <input
+              type="text"
+              placeholder="Your Name"
+              className="px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-clay"
+            />
+            <input
+              type="email"
+              placeholder="Your Email"
+              className="px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-clay"
+            />
+            <textarea
+              placeholder="Tell us about your idea..."
+              rows={5}
+              className="px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-clay"
+            ></textarea>
+            <button
+              type="submit"
+              className="bg-clay hover:bg-clay/90 text-white py-3 rounded-md text-lg transition"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="text-center py-6 text-sm text-ink">
+        &copy; {new Date().getFullYear()} Big Sky 3D Prints. All rights reserved.
       </footer>
-    </div>
+    </main>
   );
 }
