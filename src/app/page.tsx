@@ -1,14 +1,14 @@
-import Image from 'next/image'
-import Logo from './images/logo.png'
+import Image from 'next/image';
+import Logo from './images/logo.png';
 import Header from './components/header';
 import RainCanvas from './components/RainCanvas';
 
 export default function HomePage() {
   return (
-    <main className="bg-gradient-to-b from-skylight to-white text-ink font-sans">
+    <main className="overflow-x-hidden pt-[220px] bg-gradient-to-b from-skylight to-white text-ink font-sans">
       <RainCanvas />
-      {/* Header */}
       <Header />
+
       {/* Hero Section */}
       <section className="min-h-screen flex flex-col justify-center items-center text-center px-4">
         <Image
