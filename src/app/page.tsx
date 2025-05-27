@@ -1,5 +1,3 @@
-import Image from 'next/image';
-import Logo from './images/logo.png';
 import Header from './components/header';
 import RainCanvas from './components/RainCanvas';
 import Hero3D from './components/Hero3D';
