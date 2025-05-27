@@ -3,6 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Logo from '../images/logo.png';
+import { motion, AnimatePresence } from 'framer-motion';
+
 
 export default function Header() {
   const [angle, setAngle] = useState(0);
@@ -91,30 +93,32 @@ export default function Header() {
       </div>
 
       {/* Mobile Dropdown */}
-      {isOpen && (
-  <div
-    className={`
-      absolute top-[100%] right-6 mt-2 p-4 bg-white rounded-2xl shadow-xl border border-gray-200
-      flex flex-col items-start gap-2 text-ink text-base font-medium
-      transform origin-top-right transition-all duration-300 ease-out
-      scale-100 opacity-100
-    `}
-    style={{ animation: 'bubbleFade 0.3s ease-out' }}
-  >
-    <Link href="/" className="w-full py-1 px-2 rounded-md hover:bg-linen" onClick={() => setIsOpen(false)}>
-      Home
-    </Link>
-    <Link href="/about" className="w-full py-1 px-2 rounded-md hover:bg-linen" onClick={() => setIsOpen(false)}>
-      About
-    </Link>
-    <Link href="/shop" className="w-full py-1 px-2 rounded-md hover:bg-linen" onClick={() => setIsOpen(false)}>
-      Shop
-    </Link>
-    <Link href="/contact" className="w-full py-1 px-2 rounded-md hover:bg-linen" onClick={() => setIsOpen(false)}>
-      Contact
-    </Link>
-  </div>
-)}
+      <AnimatePresence>
+  {isOpen && (
+    <motion.div
+      key="mobile-menu"
+      initial={{ scale: 0.2, opacity: 0, borderRadius: '100%' }}
+      animate={{ scale: 1, opacity: 1, borderRadius: '30px' }}
+      exit={{ scale: 0.2, opacity: 0, borderRadius: '100%' }}
+      transition={{ type: 'spring', stiffness: 180, damping: 14 }}
+      className="absolute top-[100%] right-4 mt-4 w-[85vw] sm:w-80 p-6 bg-white text-ink shadow-xl rounded-3xl z-40
+                 flex flex-col items-start text-lg gap-4 origin-top-right"
+    >
+      <Link href="/" onClick={() => setIsOpen(false)} className="w-full hover:underline">
+        Home
+      </Link>
+      <Link href="/about" onClick={() => setIsOpen(false)} className="w-full hover:underline">
+        About
+      </Link>
+      <Link href="/shop" onClick={() => setIsOpen(false)} className="w-full hover:underline">
+        Shop
+      </Link>
+      <Link href="/contact" onClick={() => setIsOpen(false)} className="w-full hover:underline">
+        Contact
+      </Link>
+    </motion.div>
+  )}
+</AnimatePresence>
     </header>
   );
 }
