@@ -30,19 +30,19 @@ export default function AboutPage() {
       landscape: {
         image: "/images/mountains.jpg",
         title: "Glacier National Park",
-        description: "Jagged peaks piercing endless skies, where ancient glaciers carved dramatic silhouettes against Montana&apos;s horizon."
+        description: "Jagged peaks piercing endless skies, where ancient glaciers carved dramatic silhouettes against Montana's;s horizon."
       },
       creation: {
         image: "/images/mountainlamp.png",
         title: "Peak Series Lighting",
-        description: "Angular lamp designs inspired by mountain silhouettes, casting dramatic shadows that echo Montana&apos;s rugged beauty in your living space."
+        description: "Angular lamp designs inspired by mountain silhouettes, casting dramatic shadows that echo Montana's rugged beauty in your living space."
       }
     },
     {
       landscape: {
         image: "/images/prairie.jpeg",
         title: "Eastern Montana Grasslands",
-        description: "Endless waves of prairie grass flowing like an ocean under Montana&apos;s vast sky, creating gentle, minimalist horizons."
+        description: "Endless waves of prairie grass flowing like an ocean under Montana's vast sky, creating gentle, minimalist horizons."
       },
       creation: {
         image: "/images/wavevase.png",
@@ -54,24 +54,24 @@ export default function AboutPage() {
       landscape: {
         image: "/images/river.jpg",
         title: "Missouri River Bends",
-        description: "The Missouri&apos;s serpentine path through Montana, carving graceful curves through valleys and creating natural art."
+        description: "The Missouri's serpentine path through Montana, carving graceful curves through valleys and creating natural art."
       },
       creation: {
         image: "/images/riverabstract.png",
         title: "River Current Series",
-        description: "Organic sculptures that mirror the fluid motion of Montana&apos;s rivers, capturing the essence of water&apos;s eternal dance."
+        description: "Organic sculptures that mirror the fluid motion of Montana's rivers, capturing the essence of water's eternal dance."
       }
     },
     {
       landscape: {
         image: "/images/wildflowers.jpg",
         title: "Spring Blooms",
-        description: "Vibrant wildflower carpets painting Montana&apos;s meadows in brilliant colors each spring, nature&apos;s own masterpiece."
+        description: "Vibrant wildflower carpets painting Montana's meadows in brilliant colors each spring, nature's own masterpiece."
       },
       creation: {
         image: "/images/wildflowerplanters.png",
         title: "Bloom Collection",
-        description: "Textured planters inspired by wildflower patterns, bringing Montana&apos;s natural garden aesthetic to your home."
+        description: "Textured planters inspired by wildflower patterns, bringing Montana's natural garden aesthetic to your home."
       }
     }
   ];
@@ -259,19 +259,22 @@ export default function AboutPage() {
         >
           <h1 
             ref={line1Ref} 
-            className="text-5xl md:text-7xl lg:text-9xl font-black mb-8 whitespace-nowrap bg-gradient-to-r from-ink via-clay to-honeyrose bg-clip-text text-transparent drop-shadow-2xl"
+            className="text-3xl sm:text-5xl md:text-7xl lg:text-9xl font-black mb-8 px-4 text-center bg-gradient-to-r from-ink via-clay to-honeyrose bg-clip-text text-transparent drop-shadow-2xl"
+            style={{ wordBreak: 'break-word', hyphens: 'auto' }}
           >
             BIG SKY 3D PRINTS
           </h1>
           <h2 
             ref={line2Ref} 
-            className="text-3xl md:text-6xl lg:text-8xl font-bold mb-8 whitespace-nowrap bg-gradient-to-r from-skylight via-mist to-linen bg-clip-text text-transparent drop-shadow-2xl"
+            className="text-xl sm:text-3xl md:text-6xl lg:text-8xl font-bold mb-8 px-4 text-center bg-gradient-to-r from-skylight via-mist to-linen bg-clip-text text-transparent drop-shadow-2xl"
+            style={{ wordBreak: 'break-word', hyphens: 'auto' }}
           >
             Born beneath Montana&apos;s endless skies
           </h2>
           <h3 
             ref={line3Ref} 
-            className="text-2xl md:text-5xl lg:text-7xl font-bold max-w-5xl mx-auto leading-tight px-8 py-6 bg-linen/20 backdrop-blur-md rounded-3xl border-2 border-clay/30 bg-gradient-to-r from-honeyrose via-clay to-ink bg-clip-text text-transparent"
+            className="text-lg sm:text-2xl md:text-5xl lg:text-7xl font-bold max-w-5xl mx-auto leading-tight px-4 py-4 sm:px-8 sm:py-6 bg-linen/20 backdrop-blur-md rounded-3xl border-2 border-clay/30 bg-gradient-to-r from-honeyrose via-clay to-ink bg-clip-text text-transparent text-center"
+            style={{ wordBreak: 'break-word', hyphens: 'auto' }}
           >
             We turn ideas into reality through 3D printing
           </h3>
@@ -284,24 +287,24 @@ export default function AboutPage() {
         className="relative h-screen bg-gradient-to-b from-mist via-linen to-skylight"
       >
         {/* Section Header */}
-        <div className="absolute top-[10%] left-1/2 transform -translate-x-1/2 text-center z-10">
-          <h2 className="text-3xl md:text-5xl font-bold text-ink mb-5 drop-shadow-lg">
+        <div className="absolute top-[5%] sm:top-[10%] left-1/2 transform -translate-x-1/2 text-center z-10 px-4">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-ink mb-3 sm:mb-5 drop-shadow-lg">
             Montana Inspiration
           </h2>
-          <p className="text-lg md:text-xl text-ink/80 max-w-2xl mx-auto px-4">
+          <p className="text-sm sm:text-lg md:text-xl text-ink/80 max-w-2xl mx-auto px-2 sm:px-4">
             Where Big Sky Country meets bold design — every landscape tells a story, every print captures that story
           </p>
         </div>
 
-        {/* Split Content */}
-        <div className="flex w-full h-full">
+        {/* Split Content - Mobile Stack, Desktop Side-by-Side */}
+        <div className="flex flex-col md:flex-row w-full h-full pt-32 sm:pt-24 md:pt-0">
           {/* Landscape Side */}
-          <div className="w-1/2 h-full relative flex items-center justify-center bg-gradient-to-br from-mist/40 to-skylight/30">
+          <div className="w-full md:w-1/2 h-1/2 md:h-full relative flex items-center justify-center bg-gradient-to-br from-mist/40 to-skylight/30 py-4 md:py-0">
             <div 
               ref={landscapeCardRef}
-              className="bg-linen/95 backdrop-blur-sm rounded-3xl p-8 m-8 max-w-lg shadow-2xl border-l-8 border-mist"
+              className="bg-linen/95 backdrop-blur-sm rounded-3xl p-4 sm:p-6 md:p-8 mx-4 md:m-8 max-w-lg shadow-2xl border-l-8 border-mist w-full md:w-auto"
             >
-              <div className="w-full h-64 rounded-2xl mb-5 shadow-lg overflow-hidden">
+              <div className="w-full h-48 sm:h-56 md:h-64 rounded-2xl mb-4 md:mb-5 shadow-lg overflow-hidden">
                 <Image
                   src={currentPairData.landscape.image}
                   alt={currentPairData.landscape.title}
@@ -310,23 +313,23 @@ export default function AboutPage() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="text-2xl font-bold text-ink mb-4">
+              <h3 className="text-xl sm:text-2xl font-bold text-ink mb-3 md:mb-4">
                 {currentPairData.landscape.title}
               </h3>
-              <p className="text-ink/80 leading-relaxed mb-5">
+              <p className="text-sm sm:text-base text-ink/80 leading-relaxed mb-4 md:mb-5">
                 {currentPairData.landscape.description}
               </p>
-              <div className="text-4xl text-clay animate-pulse">→</div>
+              <div className="text-3xl md:text-4xl text-clay animate-pulse text-center md:text-left">→</div>
             </div>
           </div>
 
           {/* Creation Side */}
-          <div className="w-1/2 h-full relative flex items-center justify-center bg-gradient-to-bl from-honeyrose/30 to-clay/40">
+          <div className="w-full md:w-1/2 h-1/2 md:h-full relative flex items-center justify-center bg-gradient-to-bl from-honeyrose/30 to-clay/40 py-4 md:py-0">
             <div 
               ref={creationCardRef}
-              className="bg-linen/95 backdrop-blur-sm rounded-3xl p-8 m-8 max-w-lg shadow-2xl border-l-8 border-honeyrose"
+              className="bg-linen/95 backdrop-blur-sm rounded-3xl p-4 sm:p-6 md:p-8 mx-4 md:m-8 max-w-lg shadow-2xl border-l-8 border-honeyrose w-full md:w-auto"
             >
-              <div className="w-full h-64 rounded-2xl mb-5 shadow-lg overflow-hidden">
+              <div className="w-full h-48 sm:h-56 md:h-64 rounded-2xl mb-4 md:mb-5 shadow-lg overflow-hidden">
                 <Image
                   src={currentPairData.creation.image}
                   alt={currentPairData.creation.title}
@@ -335,10 +338,10 @@ export default function AboutPage() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="text-2xl font-bold text-ink mb-4">
+              <h3 className="text-xl sm:text-2xl font-bold text-ink mb-3 md:mb-4">
                 {currentPairData.creation.title}
               </h3>
-              <p className="text-ink/80 leading-relaxed">
+              <p className="text-sm sm:text-base text-ink/80 leading-relaxed">
                 {currentPairData.creation.description}
               </p>
             </div>
@@ -348,12 +351,12 @@ export default function AboutPage() {
         {/* Pair Indicators */}
         <div 
           ref={pairIndicatorsRef}
-          className="absolute bottom-5 left-1/2 transform -translate-x-1/2 flex gap-4 flex-wrap justify-center max-w-4xl"
+          className="absolute bottom-2 sm:bottom-5 left-1/2 transform -translate-x-1/2 flex flex-wrap gap-2 sm:gap-4 justify-center max-w-4xl px-4"
         >
           {['Mountains → Lamps', 'Plains → Vases', 'Rivers → Sculptures', 'Wildflowers → Planters'].map((label, index) => (
             <div
               key={index}
-              className={`px-4 py-2 rounded-full text-sm backdrop-blur-sm border transition-all duration-500 ${
+              className={`px-2 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-sm backdrop-blur-sm border transition-all duration-500 ${
                 index === currentPair 
                   ? 'bg-clay text-linen scale-110 shadow-lg border-honeyrose' 
                   : 'bg-linen/80 text-ink hover:scale-105 border-clay/50'
