@@ -77,7 +77,7 @@ export default function FullShop() {
   const categories = ['all', 'new releases', 'planters', 'models', 'toys', 'accessories'];
 
   const filteredAndSortedProducts = useMemo(() => {
-    let filtered = selectedCategory === 'all' 
+    const filtered = selectedCategory === 'all' 
       ? allProducts 
       : allProducts.filter(product => product.category === selectedCategory);
 
