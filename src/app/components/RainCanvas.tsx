@@ -13,6 +13,9 @@ export default function RainCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const fullRainPool = useRef<Raindrop[]>([]);
   const intensityRef = useRef(0);
+  const brightnessRef = useRef(1);
+  const cloudOffsetRef = useRef(0);
+  // const flashRef = useRef(0); // For thunder shimmer
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -36,16 +39,26 @@ export default function RainCanvas() {
 
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Darken background based on intensity
+      ctx.fillStyle = `rgba(0, 0, 0, ${0.3 * intensityRef.current})`;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Optional thunder shimmer at peak
+      // if (intensityRef.current > 0.95 && Math.random() > 0.98) {
+      //   ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+      //   ctx.fillRect(0, 0, canvas.width, canvas.height);
+      // }
+
       const dropCount = Math.floor(intensityRef.current * fullRainPool.current.length);
       const activeDrops = fullRainPool.current.slice(0, dropCount);
 
       ctx.lineWidth = 1.2;
-
       for (const drop of activeDrops) {
         ctx.strokeStyle = `rgba(100, 100, 255, ${drop.opacity * intensityRef.current})`;
         ctx.beginPath();
-        ctx.moveTo(drop.x, drop.y);
-        ctx.lineTo(drop.x, drop.y + drop.length);
+        ctx.moveTo(drop.x, drop.y + cloudOffsetRef.current); // Cloud offset
+        ctx.lineTo(drop.x, drop.y + drop.length + cloudOffsetRef.current);
         ctx.stroke();
         drop.y += drop.speed;
 
@@ -62,7 +75,25 @@ export default function RainCanvas() {
       const scrollTop = window.scrollY;
       const docHeight = document.body.scrollHeight - window.innerHeight;
       const scrollProgress = Math.min(scrollTop / docHeight, 1);
-      intensityRef.current = Math.max(0, scrollProgress - 0.15);
+
+      const startFadeIn = 0.2;
+      const peak = 0.55;
+      const endFadeOut = 0.85;
+
+      let intensity = 0;
+      if (scrollProgress < startFadeIn) {
+        intensity = 0;
+      } else if (scrollProgress < peak) {
+        intensity = (scrollProgress - startFadeIn) / (peak - startFadeIn);
+      } else if (scrollProgress < endFadeOut) {
+        intensity = 1 - (scrollProgress - peak) / (endFadeOut - peak);
+      } else {
+        intensity = 0;
+      }
+
+      intensityRef.current = intensity;
+      brightnessRef.current = 1 - 0.3 * intensity; // Dim slightly
+      cloudOffsetRef.current = -50 * intensity; // Raise clouds slightly upward
     };
 
     window.addEventListener('scroll', handleScroll);

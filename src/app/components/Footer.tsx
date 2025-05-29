@@ -21,7 +21,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-mist text-ink px-6 py-10 text-center border-t border-clay mt-20 text-sm">
+    <footer className="bg-mist text-ink px-6 py-10 text-center border-t border-clay mt-0 text-sm">
       <div className="max-w-6xl mx-auto grid gap-6 md:grid-cols-3">
         {/* Site Links */}
         <div>

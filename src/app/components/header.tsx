@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+
 const Logo = '/images/logo.png'; // Adjust path as needed
 
 export default function Header() {
@@ -24,13 +25,30 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const maxScroll = 1000; // slow cloud reaction range
-const scrollProgress = Math.min(scrollY / maxScroll, 1);
-const easedProgress = Math.pow(scrollProgress, 2.2); // more easing = slower ramp-up
+  // Unified cloud behavior based on scroll progress
+  const totalHeight =
+    typeof window !== 'undefined'
+      ? document.body.scrollHeight - window.innerHeight
+      : 1;
+  const scrollProgress = Math.min(scrollY / totalHeight, 1);
 
-const cloudLift = easedProgress * 60; // gentle rise
-const cloudDarkness = 1 - easedProgress * 0.25; // darkens less aggressively
+  const startFadeIn = 0.2;
+  const peak = 0.55;
+  const endFadeOut = 0.85;
 
+  let cloudIntensity = 0;
+  if (scrollProgress < startFadeIn) {
+    cloudIntensity = 0;
+  } else if (scrollProgress < peak) {
+    cloudIntensity = (scrollProgress - startFadeIn) / (peak - startFadeIn);
+  } else if (scrollProgress < endFadeOut) {
+    cloudIntensity = 1 - (scrollProgress - peak) / (endFadeOut - peak);
+  } else {
+    cloudIntensity = 0;
+  }
+
+  const cloudLift = cloudIntensity * 60; // Clouds rise during the storm
+  const cloudDarkness = 1 - cloudIntensity * 0.25; // Slight darkening
 
   return (
     <header className="fixed top-0 z-50 w-full h-[220px] overflow-visible bg-transparent">
