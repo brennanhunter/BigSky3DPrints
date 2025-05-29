@@ -1,8 +1,6 @@
-import Header from './components/header';
 import RainCanvas from './components/RainCanvas';
 import Hero3D from './components/Hero3D';
 import WhatYouCanGet from './components/WhatYouCanGet';
-import Footer from './components/Footer';
 import TestimonialCarousel from './components/TestimonialCarousel';
 import PremadeShop from './components/PremadeShop';
 import CTA from './components/CTA';
@@ -13,14 +11,12 @@ export default function HomePage() {
     <>
       <main className="overflow-x-hidden pt-[220px] bg-gradient-to-b from-skylight to-white text-ink font-sans">
         <RainCanvas />
-        <Header />
         <Hero3D />
         <WhatYouCanGet />
         <TestimonialCarousel />
         <PremadeShop />
         <CTA />
         <SoilLayer />
-        <Footer />
       </main>
     </>
   );

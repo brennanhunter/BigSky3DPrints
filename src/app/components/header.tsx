@@ -55,9 +55,9 @@ export default function Header() {
       {/* Floating Clouds */}
       <div className="absolute top-0 left-0 w-full h-full overflow-visible pointer-events-none">
         <div
-          className="absolute left-[-15%] scale-[1.2] sm:scale-[1.5] opacity-90"
+          className="absolute left-[-15%] scale-[1.2] sm:scale-[1.5] opacity-80"
           style={{
-            top: `${-235 - cloudLift}px`,
+            top: `${-215 - cloudLift}px`,
             transform: `translateX(${Math.sin(angle) * 0.8}px)`,
             filter: `brightness(${cloudDarkness})`,
           }}
@@ -65,9 +65,9 @@ export default function Header() {
           <Image src="/cloud-3d.png" alt="Cloud Left" width={400} height={200} />
         </div>
         <div
-          className="absolute left-[5%] scale-x-[-1] scale-[1.4] sm:scale-[1.7] opacity-85"
+          className="absolute left-[5%] scale-x-[-1] scale-[1.4] sm:scale-[1.7] opacity-80"
           style={{
-            top: `${-255 - cloudLift}px`,
+            top: `${-235 - cloudLift}px`,
             transform: `translateX(${Math.sin(angle + 1) * 0.6}px)`,
             filter: `brightness(${cloudDarkness})`,
           }}
@@ -75,9 +75,9 @@ export default function Header() {
           <Image src="/cloud-3d.png" alt="Cloud Inner Left" width={430} height={220} />
         </div>
         <div
-          className="absolute left-1/2 -translate-x-1/2 scale-[1.6] sm:scale-[2] opacity-95"
+          className="absolute left-1/2 -translate-x-1/2 scale-[1.6] sm:scale-[2] opacity-80"
           style={{
-            top: `${-250 - cloudLift}px`,
+            top: `${-320 - cloudLift}px`,
             transform: `translateX(${Math.sin(angle + 2) * 0.5}px)`,
             filter: `brightness(${cloudDarkness})`,
           }}
@@ -87,7 +87,7 @@ export default function Header() {
         <div
           className="absolute right-[5%] scale-[1.4] sm:scale-[1.7] opacity-80"
           style={{
-            top: `${-255 - cloudLift}px`,
+            top: `${-235 - cloudLift}px`,
             transform: `translateX(${Math.sin(angle + 3) * 0.6}px)`,
             filter: `brightness(${cloudDarkness})`,
           }}
@@ -95,9 +95,9 @@ export default function Header() {
           <Image src="/cloud-3d.png" alt="Cloud Inner Right" width={430} height={220} />
         </div>
         <div
-          className="absolute right-[-15%] scale-[1.2] sm:scale-[1.5] opacity-90"
+          className="absolute right-[-15%] scale-[1.2] sm:scale-[1.5] opacity-80"
           style={{
-            top: `${-235 - cloudLift}px`,
+            top: `${-215 - cloudLift}px`,
             transform: `translateX(${Math.sin(angle + 4) * 0.8}px)`,
             filter: `brightness(${cloudDarkness})`,
           }}

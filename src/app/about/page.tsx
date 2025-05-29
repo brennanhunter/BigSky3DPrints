@@ -30,19 +30,19 @@ export default function AboutPage() {
       landscape: {
         image: "/images/mountains.jpg",
         title: "Glacier National Park",
-        description: "Jagged peaks piercing endless skies, where ancient glaciers carved dramatic silhouettes against Montana's horizon."
+        description: "Jagged peaks piercing endless skies, where ancient glaciers carved dramatic silhouettes against Montana&apos;s horizon."
       },
       creation: {
         image: "/images/mountainlamp.png",
         title: "Peak Series Lighting",
-        description: "Angular lamp designs inspired by mountain silhouettes, casting dramatic shadows that echo Montana's rugged beauty in your living space."
+        description: "Angular lamp designs inspired by mountain silhouettes, casting dramatic shadows that echo Montana&apos;s rugged beauty in your living space."
       }
     },
     {
       landscape: {
         image: "/images/prairie.jpeg",
         title: "Eastern Montana Grasslands",
-        description: "Endless waves of prairie grass flowing like an ocean under Montana's vast sky, creating gentle, minimalist horizons."
+        description: "Endless waves of prairie grass flowing like an ocean under Montana&apos;s vast sky, creating gentle, minimalist horizons."
       },
       creation: {
         image: "/images/wavevase.png",
@@ -54,24 +54,24 @@ export default function AboutPage() {
       landscape: {
         image: "/images/river.jpg",
         title: "Missouri River Bends",
-        description: "The Missouri's serpentine path through Montana, carving graceful curves through valleys and creating natural art."
+        description: "The Missouri&apos;s serpentine path through Montana, carving graceful curves through valleys and creating natural art."
       },
       creation: {
         image: "/images/riverabstract.png",
         title: "River Current Series",
-        description: "Organic sculptures that mirror the fluid motion of Montana's rivers, capturing the essence of water's eternal dance."
+        description: "Organic sculptures that mirror the fluid motion of Montana&apos;s rivers, capturing the essence of water&apos;s eternal dance."
       }
     },
     {
       landscape: {
         image: "/images/wildflowers.jpg",
         title: "Spring Blooms",
-        description: "Vibrant wildflower carpets painting Montana's meadows in brilliant colors each spring, nature's own masterpiece."
+        description: "Vibrant wildflower carpets painting Montana&apos;s meadows in brilliant colors each spring, nature&apos;s own masterpiece."
       },
       creation: {
         image: "/images/wildflowerplanters.png",
         title: "Bloom Collection",
-        description: "Textured planters inspired by wildflower patterns, bringing Montana's natural garden aesthetic to your home."
+        description: "Textured planters inspired by wildflower patterns, bringing Montana&apos;s natural garden aesthetic to your home."
       }
     }
   ];
@@ -81,7 +81,7 @@ export default function AboutPage() {
     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     
     const ctx = gsap.context(() => {
-      // HERO SECTION ANIMATION (your working code)
+      // HERO SECTION ANIMATION
       gsap.set([line1Ref.current, line2Ref.current, line3Ref.current], {
         x: '-100%',
         opacity: 0
@@ -91,14 +91,11 @@ export default function AboutPage() {
         scrollTrigger: {
           trigger: heroSectionRef.current,
           start: 'top top',
-          end: '+=1200vh', // Much longer to match the extended timeline
-          scrub: 8, // Slower scrubbing for the longer distance
+          end: '+=1200vh',
+          scrub: 8,
           pin: true,
           anticipatePin: 1,
           onUpdate: (self) => {
-            // More detailed logging
-            console.log(`HERO: Progress: ${Math.round(self.progress * 100)}%, ScrollY: ${window.scrollY}`);
-            
             if (self.progress > 0.02 && blockerRef.current) {
               gsap.to(blockerRef.current, {
                 opacity: 0,
@@ -106,11 +103,7 @@ export default function AboutPage() {
                 duration: 0.3
               });
             }
-          },
-          onEnter: () => console.log('HERO: Entered'),
-          onLeave: () => console.log('HERO: Left'),
-          onEnterBack: () => console.log('HERO: Entered back'),
-          onLeaveBack: () => console.log('HERO: Left back')
+          }
         },
       });
 
@@ -118,50 +111,50 @@ export default function AboutPage() {
         .to(line1Ref.current, { 
           x: '0%', 
           opacity: 1, 
-          duration: 4, // Much longer to fill the scroll space
+          duration: 4,
           ease: 'power2.out'
         })
         .to(line1Ref.current, { 
           x: '0%', 
           opacity: 1, 
-          duration: 4 // Much longer hold
+          duration: 4
         })
         .to(line1Ref.current, { 
           x: '100%', 
           opacity: 0, 
-          duration: 4, // Much longer exit
+          duration: 4,
           ease: 'power2.in'
         })
         .to(line2Ref.current, { 
           x: '0%', 
           opacity: 1, 
-          duration: 4, // Much longer
+          duration: 4,
           ease: 'power2.out'
-        }, '<1') // Larger overlap
+        }, '<1')
         .to(line2Ref.current, { 
           x: '0%', 
           opacity: 1, 
-          duration: 4 // Much longer hold
+          duration: 4
         })
         .to(line2Ref.current, { 
           x: '100%', 
           opacity: 0, 
-          duration: 4, // Much longer exit
+          duration: 4,
           ease: 'power2.in'
         })
         .to(line3Ref.current, { 
           x: '0%', 
           opacity: 1, 
-          duration: 4, // Much longer
+          duration: 4,
           ease: 'power2.out'
-        }, '<1') // Larger overlap
+        }, '<1')
         .to(line3Ref.current, { 
           x: '0%', 
           opacity: 1, 
-          duration: 8 // Extra long final hold to fill remaining scroll space
+          duration: 8
         });
 
-      // MONTANA INSPIRATION SECTION - EXTREMELY slow transitions for testing
+      // MONTANA INSPIRATION SECTION
       gsap.set([landscapeCardRef.current, creationCardRef.current], {
         y: 100,
         opacity: 0
@@ -171,40 +164,32 @@ export default function AboutPage() {
         opacity: 0
       });
 
-      // Separate ScrollTrigger for inspiration section
       ScrollTrigger.create({
         trigger: inspirationSectionRef.current,
         start: "top top",
-        end: `+=${inspirationPairs.length * 400}vh`, // EXTREME: 4 full screens per pair!
-        scrub: 5, // VERY slow scrubbing
+        end: `+=${inspirationPairs.length * 400}vh`,
+        scrub: 5,
         pin: true,
         anticipatePin: 1,
         onUpdate: (self) => {
           const progress = self.progress;
           const totalPairs = inspirationPairs.length;
           
-          // Calculate which pair should be shown based on progress
           const pairProgress = progress * totalPairs;
           const newPairIndex = Math.min(Math.floor(pairProgress), totalPairs - 1);
           
-          // Update the pair index - this will work for both up and down scrolling
           setCurrentPair(newPairIndex);
           
-          // Animate cards into view
           gsap.to([landscapeCardRef.current, creationCardRef.current], {
             y: 0,
             opacity: 1,
             duration: 0.6
           });
           
-          // Show indicators when section is active
           gsap.to(pairIndicatorsRef.current, {
             opacity: 1,
             duration: 0.6
           });
-          
-          // Debug logging to see if it's working
-          console.log(`Progress: ${Math.round(progress * 100)}%, Pair: ${newPairIndex}`);
         }
       });
 
@@ -240,7 +225,7 @@ export default function AboutPage() {
   const currentPairData = inspirationPairs[currentPair];
 
   return (
-    <main className="text-white font-sans">
+    <main className="text-ink font-sans">
       {/* HERO SECTION */}
       <section ref={heroSectionRef} className="relative w-full h-screen overflow-hidden">
         <video
@@ -252,18 +237,18 @@ export default function AboutPage() {
         >
           <source src="/videos/hero-video.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-blue-900/50 mix-blend-multiply z-10" />
+        <div className="absolute inset-0 bg-gradient-to-br from-ink/80 via-clay/40 to-mist/30 z-10" />
 
         <div
           ref={blockerRef}
-          className="absolute inset-0 z-30 flex items-center justify-center bg-black/60 backdrop-blur-sm"
+          className="absolute inset-0 z-30 flex items-center justify-center bg-ink/60 backdrop-blur-sm"
         >
           <div className="text-center">
-            <span className="text-white text-xl md:text-2xl font-bold animate-pulse block mb-4">
+            <span className="text-linen text-xl md:text-2xl font-bold animate-pulse block mb-4">
               Scroll to Begin
             </span>
-            <div className="w-6 h-10 border-2 border-white rounded-full mx-auto opacity-75">
-              <div className="w-1 h-3 bg-white rounded-full mx-auto mt-2 animate-bounce"></div>
+            <div className="w-6 h-10 border-2 border-linen rounded-full mx-auto opacity-75">
+              <div className="w-1 h-3 bg-linen rounded-full mx-auto mt-2 animate-bounce"></div>
             </div>
           </div>
         </div>
@@ -274,19 +259,19 @@ export default function AboutPage() {
         >
           <h1 
             ref={line1Ref} 
-            className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-8 whitespace-nowrap"
+            className="text-5xl md:text-7xl lg:text-9xl font-black mb-8 whitespace-nowrap bg-gradient-to-r from-ink via-clay to-honeyrose bg-clip-text text-transparent drop-shadow-2xl"
           >
-            Big Sky 3D Prints
+            BIG SKY 3D PRINTS
           </h1>
           <h2 
             ref={line2Ref} 
-            className="text-3xl md:text-5xl lg:text-6xl font-bold mb-8 whitespace-nowrap"
+            className="text-3xl md:text-6xl lg:text-8xl font-bold mb-8 whitespace-nowrap bg-gradient-to-r from-skylight via-mist to-linen bg-clip-text text-transparent drop-shadow-2xl"
           >
-            Born beneath Montana's endless skies
+            Born beneath Montana&apos;s endless skies
           </h2>
           <h3 
             ref={line3Ref} 
-            className="text-2xl md:text-4xl lg:text-5xl font-medium max-w-4xl mx-auto leading-tight"
+            className="text-2xl md:text-5xl lg:text-7xl font-bold max-w-5xl mx-auto leading-tight px-8 py-6 bg-linen/20 backdrop-blur-md rounded-3xl border-2 border-clay/30 bg-gradient-to-r from-honeyrose via-clay to-ink bg-clip-text text-transparent"
           >
             We turn ideas into reality through 3D printing
           </h3>
@@ -296,14 +281,14 @@ export default function AboutPage() {
       {/* MONTANA INSPIRATION SECTION */}
       <section 
         ref={inspirationSectionRef}
-        className="relative bg-gradient-to-b from-slate-900 to-slate-800 h-screen"
+        className="relative h-screen bg-gradient-to-b from-mist via-linen to-skylight"
       >
         {/* Section Header */}
         <div className="absolute top-[10%] left-1/2 transform -translate-x-1/2 text-center z-10">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-5 drop-shadow-lg">
+          <h2 className="text-3xl md:text-5xl font-bold text-ink mb-5 drop-shadow-lg">
             Montana Inspiration
           </h2>
-          <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto px-4">
+          <p className="text-lg md:text-xl text-ink/80 max-w-2xl mx-auto px-4">
             Where Big Sky Country meets bold design — every landscape tells a story, every print captures that story
           </p>
         </div>
@@ -311,10 +296,10 @@ export default function AboutPage() {
         {/* Split Content */}
         <div className="flex w-full h-full">
           {/* Landscape Side */}
-          <div className="w-1/2 h-full relative flex items-center justify-center bg-gradient-to-br from-emerald-800/30 to-emerald-900/30">
+          <div className="w-1/2 h-full relative flex items-center justify-center bg-gradient-to-br from-mist/40 to-skylight/30">
             <div 
               ref={landscapeCardRef}
-              className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 m-8 max-w-lg shadow-2xl border-l-8 border-emerald-600"
+              className="bg-linen/95 backdrop-blur-sm rounded-3xl p-8 m-8 max-w-lg shadow-2xl border-l-8 border-mist"
             >
               <div className="w-full h-64 rounded-2xl mb-5 shadow-lg overflow-hidden">
                 <Image
@@ -325,21 +310,21 @@ export default function AboutPage() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">
+              <h3 className="text-2xl font-bold text-ink mb-4">
                 {currentPairData.landscape.title}
               </h3>
-              <p className="text-gray-600 leading-relaxed mb-5">
+              <p className="text-ink/80 leading-relaxed mb-5">
                 {currentPairData.landscape.description}
               </p>
-              <div className="text-4xl text-orange-500 animate-pulse">→</div>
+              <div className="text-4xl text-clay animate-pulse">→</div>
             </div>
           </div>
 
           {/* Creation Side */}
-          <div className="w-1/2 h-full relative flex items-center justify-center bg-gradient-to-bl from-orange-800/30 to-orange-900/30">
+          <div className="w-1/2 h-full relative flex items-center justify-center bg-gradient-to-bl from-honeyrose/30 to-clay/40">
             <div 
               ref={creationCardRef}
-              className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 m-8 max-w-lg shadow-2xl border-l-8 border-orange-500"
+              className="bg-linen/95 backdrop-blur-sm rounded-3xl p-8 m-8 max-w-lg shadow-2xl border-l-8 border-honeyrose"
             >
               <div className="w-full h-64 rounded-2xl mb-5 shadow-lg overflow-hidden">
                 <Image
@@ -350,10 +335,10 @@ export default function AboutPage() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">
+              <h3 className="text-2xl font-bold text-ink mb-4">
                 {currentPairData.creation.title}
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-ink/80 leading-relaxed">
                 {currentPairData.creation.description}
               </p>
             </div>
@@ -370,8 +355,8 @@ export default function AboutPage() {
               key={index}
               className={`px-4 py-2 rounded-full text-sm backdrop-blur-sm border transition-all duration-500 ${
                 index === currentPair 
-                  ? 'bg-orange-500 text-white scale-110 shadow-lg border-orange-400' 
-                  : 'bg-white/20 text-white hover:bg-white/30 border-white/30'
+                  ? 'bg-clay text-linen scale-110 shadow-lg border-honeyrose' 
+                  : 'bg-linen/80 text-ink hover:scale-105 border-clay/50'
               }`}
             >
               {label}
@@ -381,11 +366,11 @@ export default function AboutPage() {
       </section>
 
       {/* MEET DANE SECTION */}
-      <section className="relative bg-clay text-ink py-32 px-6">
+      <section className="relative bg-gradient-to-b from-linen to-clay py-32 px-6">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
           <div
             ref={imageRef}
-            className="rounded-full overflow-hidden w-64 h-64 shadow-xl border border-white/50"
+            className="rounded-full overflow-hidden w-64 h-64 shadow-xl border-4 border-mist"
           >
             <Image
               src="/images/dane-patch.png"
@@ -396,12 +381,12 @@ export default function AboutPage() {
             />
           </div>
           <div ref={textRef} className="text-left">
-            <h2 className="text-3xl font-bold mb-4">Meet Dane Patch</h2>
-            <p className="text-lg mb-4">
-              Dane's been building things since he could walk. With a love for the outdoors and a knack for design,
+            <h2 className="text-3xl font-bold mb-4 text-ink">Meet Dane Patch</h2>
+            <p className="text-lg mb-4 text-ink/90">
+              Dane&apos;s been building things since he could walk. With a love for the outdoors and a knack for design,
               he founded Big Sky 3D Prints to bring handcrafted creativity into the digital age.
             </p>
-            <p className="italic">"I just like making cool stuff people actually use."</p>
+            <p className="italic text-clay text-xl">&quot;I just like making cool stuff people actually use.&quot;</p>
           </div>
         </div>
       </section>
