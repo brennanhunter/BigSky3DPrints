@@ -138,7 +138,7 @@ export default function OurStory() {
           </h3>
           
           <div ref={timelineRef} className="space-y-6">
-            {timeline.map((item, index) => (
+            {timeline.map((item) => (
               <div 
                 key={item.year}
                 className="timeline-item bg-white/95 backdrop-blur-sm rounded-2xl p-6 shadow-lg border-l-4 border-clay hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 hover:border-honeyrose"
