@@ -1,7 +1,6 @@
 'use client';
 
-import { useLayoutEffect, useRef, useState } from 'react';
-import Image from 'next/image';
+import { useLayoutEffect, useRef} from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -11,7 +10,6 @@ export default function OurProcess() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const headerRef = useRef<HTMLDivElement | null>(null);
   const stepsRef = useRef<HTMLDivElement | null>(null);
-  const [activeStep, setActiveStep] = useState(0);
 
   const processSteps = [
     {
