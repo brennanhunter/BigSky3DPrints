@@ -3,6 +3,8 @@ import { useLayoutEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import OurStory from '../components/OurStory';
+import OurProcess from '../components/OurProcess';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -407,7 +409,11 @@ export default function AboutPage() {
             <p className="italic text-clay text-xl">&quot;I just like making cool stuff people actually use.&quot;</p>
           </div>
         </div>
+        
+        
       </section>
+      <OurStory />
+      <OurProcess />
     </main>
   );
 }
