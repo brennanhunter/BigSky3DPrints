@@ -102,19 +102,15 @@ export default function OurProcess() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      // Animate header
+      // Simple entrance animation for header (no ScrollTrigger)
       gsap.fromTo(headerRef.current,
-        { y: 60, opacity: 0 },
+        { y: 30, opacity: 0 },
         {
           y: 0, 
           opacity: 1, 
-          duration: 1.2, 
+          duration: 1, 
           ease: 'power2.out',
-          scrollTrigger: {
-            trigger: headerRef.current,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse'
-          }
+          delay: 0.2 // Start shortly after component mounts
         }
       );
 
@@ -122,25 +118,16 @@ export default function OurProcess() {
       const stepCards = stepsRef.current?.querySelectorAll('.step-card');
       if (stepCards) {
         gsap.fromTo(stepCards,
-          { y: 40, opacity: 0 },
+          { y: 50, opacity: 0 },
           { 
             y: 0, 
             opacity: 1, 
             duration: 0.8, 
-            stagger: 0.2,
+            stagger: 0.15,
             ease: 'power2.out',
-            delay: 0.3 // Start after component mounts
+            delay: 0.5 // Start after header animation
           }
         );
-
-        // Set up simple scroll-based active step tracking
-        stepCards.forEach((card, index) => {
-          ScrollTrigger.create({
-            trigger: card,
-            start: 'top 85%',
-            onEnter: () => setActiveStep(index)
-          });
-        });
       }
     });
 
